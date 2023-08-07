@@ -12,14 +12,10 @@ jobs:
 
     - name: Clone AstroBuild repository
       run: |
-        mkdir astrobuild_repo
-        git clone https://github.com/lhartikk/AstroBuild.git astrobuild_repo
+        git clone https://github.com/christian-s/AstroBuild.git astrobuild_repo
 
-    - name: Set up Python 2.7
-      uses: actions/setup-python@v2
-      with:
-        python-version: 2.7
+    - name: Set up Python
+      uses: actions/setup-python@v4
 
     - name: Run astro_build.py
       run: python astrobuild_repo/astro_build.py
-      continue-on-error: true
