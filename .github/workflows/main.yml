@@ -13,7 +13,7 @@ jobs:
     - name: Clone AstroBuild repository
       run: |
         mkdir astrobuild_repo
-        git clone git@github.com:lhartikk/AstroBuild.git astrobuild_repo
+        git clone https://github.com/lhartikk/AstroBuild.git astrobuild_repo
 
     - name: Set up Python 2.7
       uses: actions/setup-python@v2
