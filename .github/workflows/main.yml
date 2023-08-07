@@ -12,10 +12,12 @@ jobs:
 
     - name: Clone AstroBuild repository
       run: |
-        git clone https://github.com/christian-s/AstroBuild.git astrobuild_repo
+        git clone --depth=1 https://github.com/christian-s/AstroBuild.git astrobuild_repo
 
-    - name: Set up Python
+    - name: Set up Python 3.9
       uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
 
     - name: Run astro_build.py
       run: python astrobuild_repo/astro_build.py
