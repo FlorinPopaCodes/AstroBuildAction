@@ -1,0 +1,25 @@
+name: Run AstroBuild Script
+
+on: [push, pull_request]
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Clone AstroBuild repository
+      run: |
+        mkdir astrobuild_repo
+        git clone git@github.com:lhartikk/AstroBuild.git astrobuild_repo
+
+    - name: Set up Python 2.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 2.7
+
+    - name: Run astro_build.py
+      run: python astrobuild_repo/astro_build.py
+      continue-on-error: true
