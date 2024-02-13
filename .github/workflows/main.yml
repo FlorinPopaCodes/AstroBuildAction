@@ -14,10 +14,10 @@ jobs:
         repository: aequitas/AstroBuild
         path: astrobuild_repo
 
-    - name: Set up Python 3.9
+    - name: Set up Python 2.7
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '2.7'
 
     - name: Run astro_build.py
       run: python astrobuild_repo/astro_build.py
