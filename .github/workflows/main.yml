@@ -7,17 +7,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Clone AstroBuild repository
-      run: |
-        git clone --depth=1 https://github.com/christian-s/AstroBuild.git astrobuild_repo
-
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/checkout@v4
       with:
-        python-version: '3.9'
+        sparse-checkout: .
+        repository: FlorinPopaCodes/AstroBuild
+        path: astrobuild_repo
+
+    - name: Set up Python 2.7
+      uses: LizardByte/setup-python-action@master
+      with:
+        python-version: '2.7'
 
     - name: Run astro_build.py
       run: python astrobuild_repo/astro_build.py
