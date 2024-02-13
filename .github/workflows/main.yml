@@ -14,10 +14,13 @@ jobs:
         repository: aequitas/AstroBuild
         path: astrobuild_repo
 
-    - name: Set up Python 2.7
-      uses: actions/setup-python@v4
-      with:
-        python-version: '2.7'
+    - name: Install Python 2.7.18
+      shell: cmd
+      run: |
+        choco install wget --no-progress
+        wget -nv "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+        start /wait msiexec.exe /passive /i python-2.7.18.amd64.msi /norestart /L*V "python_install.log" ADDLOCAL=ALL ALLUSERS=1 TARGETDIR=c:\python27
+        type "python_install.log"
 
     - name: Run astro_build.py
       run: python astrobuild_repo/astro_build.py
